@@ -70,7 +70,7 @@ def draw_road():
     pygame.draw.rect(screen, ROAD, (WIDTH/3, 0, WIDTH/3, HEIGHT))
     pygame.draw.rect(screen, ROAD, (0, HEIGHT/3, WIDTH, HEIGHT/3))
 
-
+# TEST COMMIT
 #
 #def draw_play_button():
 #    pygame.draw.rect(screen, BUTTON_COLOR, (10, 10, 60, 30))
