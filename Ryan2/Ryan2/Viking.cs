@@ -1,0 +1,1 @@
+// Viking class implementation file
