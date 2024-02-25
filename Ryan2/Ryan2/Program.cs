@@ -2,7 +2,7 @@
 using System;
 using VikingNS;
 
-Viking viking1 = new Viking("", Global.Status.JARL, 100, Global.Weapon.SWORD, true);
+Viking viking1 = new Viking("Thorfinn", Global.Status.JARL, 100, Global.Weapon.SWORD, true);
 
         // Display the details of viking1
         /*Console.WriteLine($"Viking Name: {viking1.Name}");
