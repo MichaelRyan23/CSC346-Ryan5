@@ -3,7 +3,7 @@ using System;
 
 namespace VikingNS
 {
-    public class Viking {
+    public class Viking : IView {
         
         public string? Name { get; set; }
         public short Health { get; set; }
@@ -27,12 +27,23 @@ namespace VikingNS
 
         }
 
-        public Viking(Viking previousViking) {
-            Name = previousViking.Name;
-            Status = previousViking.Status;
-            Health = previousViking.Health;
-            Weapon = previousViking.Weapon;
-            Shield = previousViking.Shield;
+        public Viking(Viking oldViking) {
+            Name = oldViking.Name;
+            Status = oldViking.Status;
+            Health = oldViking.Health;
+            Weapon = oldViking.Weapon;
+            Shield = oldViking.Shield;
         }
+
+        public void ViewH() {
+            WriteLine("Name     Status     Health    Weapon    Shield");
+            WriteLine("=================================================");
+            WriteLine("{0, -10}{1,-10}{2,-10}{3,-10}{4,-10}", Name, Status, Health, Weapon, Shield);
+        }
+
+        public void ViewV() {
+            WriteLine("Name:\t\t{0}\nStatus:\t\t{1}\nHealth:\t\t{2}\nWeapon:\t\t{3}\nShield:\t\t{4}", Name, Status, Health, Weapon, Shield);
+        }
+
     };
 }
