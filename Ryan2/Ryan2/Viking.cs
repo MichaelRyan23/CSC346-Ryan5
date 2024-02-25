@@ -20,10 +20,27 @@ namespace VikingNS
         ) {
 
             Name = name;
+            if(string.IsNullOrEmpty(name)) {
+                throw new ArgumentException("Name cannot be null or whitespace.", nameof(name));
+            }
+            
             Status = status;
+            if(!Enum.IsDefined(typeof(Global.Status), status)) {
+                throw new ArgumentOutOfRangeException(nameof(status), "Invalid status value.");
+            }
+
             Health = health;
+            if(health <= 0) {
+                throw new ArgumentOutOfRangeException(nameof(health), "Health must be greater than 0.");
+            }
+
             Weapon = weapon;
+            if(!Enum.IsDefined(typeof(Global.Weapon), weapon)) {
+                throw new ArgumentOutOfRangeException(nameof(weapon), "Invalid weapon value.");
+            }
+
             Shield = shield;
+            // shield exception?
 
         }
 
