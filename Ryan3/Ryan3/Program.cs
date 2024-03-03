@@ -9,14 +9,17 @@ class Program
         // Test creating a Karl with default values
         Karl defaultKarl = new Karl();
         Console.WriteLine(defaultKarl.ToString());
+        Console.WriteLine("\n");
 
         // Test creating a Karl with custom values
         Karl customKarl = new Karl("Leif", 150, Global.Weapon.AXE, false, Global.Duty.WARRIOR);
         Console.WriteLine(customKarl.ToString());
+        Console.WriteLine("\n");
 
         // Test copying a Karl
         Karl copiedKarl = new Karl(customKarl);
         Console.WriteLine(copiedKarl.ToString());
+        Console.WriteLine("\n");
 
         // Test with invalid name for Karl
         try

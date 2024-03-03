@@ -15,7 +15,7 @@ public abstract class Viking {
 *** DESCRIPTION : Initializes a new instance of the viking class, giving
 *** the user the option to make each property their own. Default value is
 *** implemented if none is entered, and the constructor includes exception handling
-*** INPUT ARGS : name, status, health, weapon, shield
+*** INPUT ARGS : name, health, weapon, shield
 *** OUTPUT ARGS : 
 *** IN/OUT ARGS : 
 *** RETURN : N/A
@@ -66,6 +66,17 @@ public abstract class Viking {
 
     }
 
+/********************************************************************
+*** METHOD ToString 
+*********************************************************************
+*** DESCRIPTION : Overrides default ToString method to provide a string
+*** that displays the Viking's attributes, basically for easy reading and
+*** printing of a viking's properties.
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS :
+*** RETURN : string (Formatted description)
+********************************************************************/
     public override string? ToString() {
 
         return $"Name:\t\t{Name}\nHealth:\t\t{Health}\nWeapon:\t\t{Weapon}\nShield:\t\t{Shield}";
