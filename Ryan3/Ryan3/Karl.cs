@@ -24,7 +24,7 @@ public class Karl : Viking {
 
     public override string? ToString() {
 
-        return $"{base.ToString()},\nDuty:\t\t{Duty}";
+        return $"{base.ToString()}\nDuty:\t\t{Duty}";
 
     }
 }
