@@ -12,16 +12,15 @@ public class Switch : Platform {
     }) {}
 
     // copy constructor
-    private Switch(Switch oldSwitch) : base(oldSwitch) {
-        selected = oldSwitch.selected;
-        paid = oldSwitch.paid;
-    }
+    private Switch(Switch oldSwitch) : base(oldSwitch) {}
 
     public override void introduction() {
         Writeline("Welcome to the Nintendo Switch store section!");
     }
 
     public override void Change() {
+        
+        int change = paid - games[selected].Price;
         
     }
 }

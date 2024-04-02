@@ -1,4 +1,7 @@
 ﻿// driver file
+namepace StoreNS;
+using System;
+using System.Collections.Generic;
 
 bool exit = false;
 PS5 ps5 = new PS5();

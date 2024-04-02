@@ -10,9 +10,9 @@ public abstract class Platform : IPlatform {
 
     // default constructor
     protected Platform(List<Game> gamesList, int selected = -1, int paid = 0) {
-        this.games = gamesList;
-        this.selected = selected;
-        this.paid = paid;
+        games = gamesList;
+        selected = selected;
+        paid = paid;
     }
 
     // copy constructor
@@ -32,9 +32,9 @@ public abstract class Platform : IPlatform {
             Change();
             Deliver();
 
-            Writeline("Would you like to continue shopping? (yes/no)");
-            string userChoice = Console.Readline();
-            isRunning = userChoice?.ToLower() == "yes"; // true if userChoice = 'yes', false otherwise
+            //Writeline("Would you like to continue shopping? (yes/no)");
+            //string userChoice = Console.Readline();
+            //isRunning = userChoice?.ToLower() == "yes"; // true if userChoice = 'yes', false otherwise
         }
     }
 
@@ -44,6 +44,8 @@ public abstract class Platform : IPlatform {
 
     protected void Selection() {
 
+        Writeline("Games in stock\n");
+    
         int i = 1;
         foreach(var game in games) {
             Writeline($"{i}: {game.Name}\t${game.Price}\t{game.Units} units available");
@@ -85,6 +87,7 @@ public abstract class Platform : IPlatform {
     protected virtual void Payment() {
 
         Writeline("TRANSACTION HANDLING");
+        Writeline($"Cost of game: {games[selected].Price}");
 
         int price = games[selected].Price;
         int total = 0;
@@ -130,6 +133,12 @@ public abstract class Platform : IPlatform {
 
         if(change > 0) {
 
+            tens = change / 10;
+            ones = change % 10;
+
+            Writeline($"Change due: ${change}");
+            Writeline($"$10 bills:    {tens}");
+            Writeline($"$1 bills:     {ones}");
         }
         else {
             Writeline("No change is needed!");
