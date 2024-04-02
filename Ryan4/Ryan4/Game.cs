@@ -21,14 +21,4 @@ public class Game {
         Units = oldGame.Units;
     }
 
-    public void PurchaseGame() {
-
-        if(Units > 0) {
-            Units--;
-        }
-        else {
-            throw new InvalidOperationException("Game is out of stock!");   // exception handling (FROM STACKOVERFLOW)
-        }
-
-    }
 }
