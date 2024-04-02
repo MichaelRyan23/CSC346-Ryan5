@@ -5,13 +5,13 @@ PS5 ps5 = new PS5();
 Switch nintendoSwitch = new Switch();
 
 while (!exit) {
-    WriteLine("\nWelcome to the Game Store!\n");
+    WriteLine("Welcome to the Game Store!");
     WriteLine("Select a game system:");
     WriteLine("1. PS5");
     WriteLine("2. Switch");
     WriteLine("3. Exit");
 
-    Write("\nEnter your choice (1-3): ");
+    Write("Enter your choice (1-3): ");
     if (int.TryParse(Console.ReadLine(), out int choice)) {
         switch (choice) {
             case 1:
