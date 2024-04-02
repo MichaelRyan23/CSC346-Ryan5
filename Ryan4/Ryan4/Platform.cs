@@ -33,7 +33,7 @@ public abstract class Platform : IPlatform {
             Deliver();
 
             Writeline("Would you like to continue shopping? (yes/no)");
-            string userChoice = Console.ReadLine();
+            string userChoice = Console.Readline();
             isRunning = userChoice?.ToLower() == "yes"; // true if userChoice = 'yes', false otherwise
         }
     }
@@ -52,7 +52,7 @@ public abstract class Platform : IPlatform {
         
         do {
             Writeline("Enter the number of the game you wish to purchase!");
-            string input = Console.ReadLine();
+            string input = Console.Readline();
 
             try {
                 int uChoice = int.Parse(input);
@@ -84,13 +84,60 @@ public abstract class Platform : IPlatform {
 
     protected virtual void Payment() {
 
+        Writeline("TRANSACTION HANDLING");
+
+        int price = games[selected].Price;
+        int total = 0;
+        int twenties;
+        int tens;
+        string input;
+
+        do {
+            twenties = 0;
+            tens = 0;
+
+            Writeline("Enter the amount of $20 bills: ");
+
+            input = Console.Readline();
+            if(!int.TryParse(input, out twenties)) {        // stack overflow
+                twenties = 0;   // ONLY if invalid input
+            }
+
+            Writeline("Enter the amount of $10 bills: ");
+            input = Console.Readline();
+            if(!int.TryParse(input, out tens)) {
+                tens = 0;
+            }
+    
+            total += twenties*20 + tens*10;
+
+            if(total < price) {
+                Writeline("Total paid is less than amount due. Please continue paying!");
+                Writeline($"Amount still owed: ${price - total}");
+            }
+            
+        } while (total < price);
+
+        Writeline($"Amount paid: ${total}");
+        paid = total;
     }
 
     protected virtual void Change() {
 
+        int change = paid - games[selected].Price;
+        int tens;
+        int ones;
+
+        if(change > 0) {
+
+        }
+        else {
+            Writeline("No change is needed!");
+        }
     }
 
     protected void Deliver() {
-        
+        Writeline($"Your {games[selected].Name} game has been successfully purchased, and is currently being delivered!");
+        Writeline("Thank you for shopping with us!");
     }
 }

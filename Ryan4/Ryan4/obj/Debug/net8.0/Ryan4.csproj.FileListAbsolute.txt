@@ -1,0 +1,5 @@
+/mnt/c/Users/Micha/Data_Share/Ryan4/Ryan4/obj/Debug/net8.0/Ryan4.GeneratedMSBuildEditorConfig.editorconfig
+/mnt/c/Users/Micha/Data_Share/Ryan4/Ryan4/obj/Debug/net8.0/Ryan4.AssemblyInfoInputs.cache
+/mnt/c/Users/Micha/Data_Share/Ryan4/Ryan4/obj/Debug/net8.0/Ryan4.AssemblyInfo.cs
+/mnt/c/Users/Micha/Data_Share/Ryan4/Ryan4/obj/Debug/net8.0/Ryan4.csproj.CoreCompileInputs.cache
+/mnt/c/Users/Micha/Data_Share/Ryan4/Ryan4/obj/Debug/net8.0/Ryan4.sourcelink.json
