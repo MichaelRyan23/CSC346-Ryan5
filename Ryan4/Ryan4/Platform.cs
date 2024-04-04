@@ -1,3 +1,12 @@
+/********************************************************************
+*** NAME :          Michael Ryan
+*** CLASS :         CSc 346
+*** ASSIGNMENT :    4
+*** DUE DATE :      4/5/2024
+*** INSTRUCTOR :    GAMRADT 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the current assignment>
+********************************************************************/
 using System;
 using System.Collections.Generic;
 namespace StoreNS;
@@ -8,18 +17,43 @@ public abstract class Platform : IPlatform {
     protected int selected;
     protected int paid;
 
-    // default constructor
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     protected Platform(List<Game> gamesList) {
         this.games = gamesList ?? new List<Game>();
     }
 
-    // copy constructor
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     protected Platform(Platform oldPlatform) {
         games = new List<Game>(oldPlatform.games);
         selected = oldPlatform.selected;
         paid = oldPlatform.paid;
     }
 
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     public void Start() {
 
         bool isRunning = true;      
@@ -36,14 +70,29 @@ public abstract class Platform : IPlatform {
             Change();
             Deliver();
 
-            //WriteLine("Would you like to continue shopping? (yes/no)");
-            //string userChoice = Console.ReadLine();
-            //isRunning = userChoice?.ToLower() == "yes"; // true if userChoice = 'yes', false otherwise
         }
     }
 
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     public abstract void Introduction();
 
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     protected void Selection() {
     
         WriteLine("\nHere is the list of Available games:\n");
@@ -57,10 +106,14 @@ public abstract class Platform : IPlatform {
         
         do {
             WriteLine($"\nEnter the number of the game you wish to purchase, or {i} to quit shopping!");
-            string input = Console.ReadLine();
+            string? input = Console.ReadLine();
 
             try {
-                int uChoice = int.Parse(input);
+
+                if(!int.TryParse(input, out int uChoice)) {
+                    WriteLine("\nInvalid input. Please enter an integer value.\n");
+                    continue;
+                }
 
                 if(uChoice == i) {
                     selected = -1;
@@ -95,6 +148,15 @@ public abstract class Platform : IPlatform {
         } while(true);  // loop continues until appropriate seleciton
     }
 
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     protected virtual void Payment() {
 
         WriteLine("\n*******TRANSACTION HANDLING*******");
@@ -104,7 +166,7 @@ public abstract class Platform : IPlatform {
         int total = 0;
         int twenties;
         int tens;
-        string input;
+        string? input;
 
         do {
             twenties = 0;
@@ -135,6 +197,15 @@ public abstract class Platform : IPlatform {
         paid = total;
     }
 
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     protected virtual void Change() {
 
         int change = paid - games[selected].Price;
@@ -160,6 +231,15 @@ public abstract class Platform : IPlatform {
         }
     }
 
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     protected void Deliver() {
 
         WriteLine($"Your {games[selected].Name} game has been successfully purchased, and is currently being delivered!");

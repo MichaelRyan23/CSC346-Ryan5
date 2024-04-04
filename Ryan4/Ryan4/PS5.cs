@@ -1,10 +1,27 @@
+/********************************************************************
+*** NAME :          Michael Ryan
+*** CLASS :         CSc 346
+*** ASSIGNMENT :    4
+*** DUE DATE :      4/5/2024
+*** INSTRUCTOR :    GAMRADT 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the current assignment>
+********************************************************************/
 using System.Collections.Generic;
 using System;
 namespace StoreNS;
 
 public class PS5 : Platform {
 
-    // default constructor
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     public PS5() : base(new List<Game> {
         new Game("Call of Duty", 54, 3),
         new Game("Elden Ring", 50, 4),
@@ -12,13 +29,39 @@ public class PS5 : Platform {
         new Game("Uncharted", 57, 2)
     }) {}
 
-    // copy constructor
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     private PS5(PS5 oldPS5) : base(oldPS5) {}
 
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     public override void Introduction() {
         WriteLine("\nWelcome to the PS5 store section!");
     }
 
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     protected override void Payment() {
         WriteLine("\n*******TRANSACTION HANDLING*******");
         WriteLine("Cost of game: ${0}\n", games[selected].Price);
@@ -26,7 +69,7 @@ public class PS5 : Platform {
         int price = games[selected].Price;
         int total = 0;
         int tens, fives, ones;
-        string input;
+        string? input;
 
         do {
             tens = 0;

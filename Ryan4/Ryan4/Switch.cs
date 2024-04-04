@@ -1,23 +1,66 @@
+/********************************************************************
+*** NAME :          Michael Ryan
+*** CLASS :         CSc 346
+*** ASSIGNMENT :    4
+*** DUE DATE :      4/5/2024
+*** INSTRUCTOR :    GAMRADT 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the current assignment>
+********************************************************************/
 using System.Collections.Generic;
 using System;
 namespace StoreNS;
 
 public class Switch : Platform {
 
-    // default constructor
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     public Switch() : base(new List<Game> {
         new Game("Animal Crossing", 46, 3),
         new Game("Link's Awakening", 50, 5),
         new Game("Pokemon Legends", 57, 1)
     }) {}
 
-    // copy constructor
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     private Switch(Switch oldSwitch) : base(oldSwitch) {}
 
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     public override void Introduction() {
         WriteLine("\nWelcome to the Nintendo Switch store section!");
     }
 
+/********************************************************************
+*** METHOD <name of method> 
+*********************************************************************
+*** DESCRIPTION : <detailed English description of the method> 
+*** INPUT ARGS : <list of all input parameter names> 
+*** OUTPUT ARGS : <list of all output parameter names> 
+*** IN/OUT ARGS : <list of all input/output parameter names> 
+*** RETURN : <return type and return value name> 
+********************************************************************/
     protected override void Change() {
         
         int change = paid - games[selected].Price;
