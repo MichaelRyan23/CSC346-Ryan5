@@ -1,15 +1,15 @@
 ﻿// driver file
-namepace StoreNS;
 using System;
 using System.Collections.Generic;
+using StoreNS;
 
 bool exit = false;
-PS5 ps5 = new PS5();
 Switch nintendoSwitch = new Switch();
+PS5 ps5 = new PS5();
 
 while (!exit) {
-    WriteLine("Welcome to the Game Store!");
-    WriteLine("Select a game system:");
+    WriteLine("\nWelcome to the Game Store!");
+    WriteLine("Please select a system");
     WriteLine("1. PS5");
     WriteLine("2. Switch");
     WriteLine("3. Exit");
@@ -25,14 +25,14 @@ while (!exit) {
                 break;
             case 3:
                 exit = true;
-                WriteLine("\nThank you for using the Game Store. Goodbye!");
+                WriteLine("\nThank you for shoppin with us!");
                 break;
             default:
-                WriteLine("\nInvalid choice. Please try again.");
+                WriteLine("\nInvalid input, try again!\n");
                 break;
         }
     }
     else {
-        WriteLine("\nInvalid input. Please enter a valid choice.");
+        WriteLine("\nInvalid input. Options are 1 -3.\n");
     }
 }

@@ -1,6 +1,6 @@
-namespace StoreNS;
 using System;
 using System.Collections.Generic;
+namespace StoreNS;
 
 public abstract class Platform : IPlatform {
 
@@ -9,10 +9,8 @@ public abstract class Platform : IPlatform {
     protected int paid;
 
     // default constructor
-    protected Platform(List<Game> gamesList, int selected = -1, int paid = 0) {
-        games = gamesList;
-        selected = selected;
-        paid = paid;
+    protected Platform(List<Game> gamesList) {
+        this.games = gamesList ?? new List<Game>();
     }
 
     // copy constructor
@@ -28,36 +26,47 @@ public abstract class Platform : IPlatform {
         while(isRunning) {
             Introduction();
             Selection();
+
+            if(selected == -1) {
+                WriteLine("\nExiting shopping screen, returning to main menu.");
+                break;
+            }
+
             Payment();
             Change();
             Deliver();
 
-            //Writeline("Would you like to continue shopping? (yes/no)");
-            //string userChoice = Console.Readline();
+            //WriteLine("Would you like to continue shopping? (yes/no)");
+            //string userChoice = Console.ReadLine();
             //isRunning = userChoice?.ToLower() == "yes"; // true if userChoice = 'yes', false otherwise
         }
     }
 
-    public virtual void Introduction() {
-        Writeline("Welcome to the Gaming store!");
-    }
+    public abstract void Introduction();
 
     protected void Selection() {
-
-        Writeline("Games in stock\n");
     
+        WriteLine("\nHere is the list of Available games:\n");
+        WriteLine("{0, -4} {1, -25} {2, 10} {3, 18}", "#", "Name", "Price", "Units Available");
         int i = 1;
         foreach(var game in games) {
-            Writeline($"{i}: {game.Name}\t${game.Price}\t{game.Units} units available");
+            WriteLine("{0, -4} {1, -25} ${2, 8:N2} {3, 18}", i + ":", game.Name, game.Price, game.Units);
             i++;
         }
+        WriteLine($"{i}: QUIT SHOPPING");
         
         do {
-            Writeline("Enter the number of the game you wish to purchase!");
-            string input = Console.Readline();
+            WriteLine($"\nEnter the number of the game you wish to purchase, or {i} to quit shopping!");
+            string input = Console.ReadLine();
 
             try {
                 int uChoice = int.Parse(input);
+
+                if(uChoice == i) {
+                    selected = -1;
+                    break;
+                }
+
                 uChoice -= 1;   // 0 based indexing
 
                 if(uChoice >= 0 && uChoice < games.Count) { // games.Count returns number of 'Game' objects in the List
@@ -70,15 +79,17 @@ public abstract class Platform : IPlatform {
                         break;  // exiting the loop when an appropriate value is selected
                     }
                     else {
-                        Writeline("Game is out of stock! Please select a different game.");
+                        WriteLine("Game is out of stock! Please select a different game.");
+                        //WriteLine("Or you can exit the shop (yes/no)");
+
                     }
                 }
                 else {
-                    Writeline("Invalid selection, please select again.");
+                    WriteLine("\nInvalid selection, please select again.");
                 }
             }
             catch(FormatException) {
-                Writeline("Invalid input. Please enter an integer value.");
+                WriteLine("Invalid input. Please enter an integer value.");
             }
 
         } while(true);  // loop continues until appropriate seleciton
@@ -86,8 +97,8 @@ public abstract class Platform : IPlatform {
 
     protected virtual void Payment() {
 
-        Writeline("TRANSACTION HANDLING");
-        Writeline($"Cost of game: {games[selected].Price}");
+        WriteLine("\n*******TRANSACTION HANDLING*******");
+        WriteLine("Cost of game: ${0}\n", games[selected].Price);
 
         int price = games[selected].Price;
         int total = 0;
@@ -98,16 +109,15 @@ public abstract class Platform : IPlatform {
         do {
             twenties = 0;
             tens = 0;
+            WriteLine("Enter the amount of $20 bills: ");
 
-            Writeline("Enter the amount of $20 bills: ");
-
-            input = Console.Readline();
+            input = Console.ReadLine();
             if(!int.TryParse(input, out twenties)) {        // stack overflow
                 twenties = 0;   // ONLY if invalid input
             }
 
-            Writeline("Enter the amount of $10 bills: ");
-            input = Console.Readline();
+            WriteLine("Enter the amount of $10 bills: ");
+            input = Console.ReadLine();
             if(!int.TryParse(input, out tens)) {
                 tens = 0;
             }
@@ -115,13 +125,13 @@ public abstract class Platform : IPlatform {
             total += twenties*20 + tens*10;
 
             if(total < price) {
-                Writeline("Total paid is less than amount due. Please continue paying!");
-                Writeline($"Amount still owed: ${price - total}");
+                WriteLine("Total paid is less than amount due. Please continue paying!");
+                WriteLine($"Amount still owed: ${price - total}");
             }
             
         } while (total < price);
 
-        Writeline($"Amount paid: ${total}");
+        WriteLine($"Amount paid: ${total}");
         paid = total;
     }
 
@@ -136,17 +146,23 @@ public abstract class Platform : IPlatform {
             tens = change / 10;
             ones = change % 10;
 
-            Writeline($"Change due: ${change}");
-            Writeline($"$10 bills:    {tens}");
-            Writeline($"$1 bills:     {ones}");
+            WriteLine($"Change due: ${change}");
+            WriteLine($"$10 bills:    {tens}");
+            WriteLine($"$1 bills:     {ones}");
         }
         else {
-            Writeline("No change is needed!");
+            tens = 0;
+            ones = 0;
+            WriteLine($"Change due: ${change}");
+            WriteLine($"$10 bills:    {tens}");
+            WriteLine($"$1 bills:     {ones}");
+            WriteLine("No change is needed!");
         }
     }
 
     protected void Deliver() {
-        Writeline($"Your {games[selected].Name} game has been successfully purchased, and is currently being delivered!");
-        Writeline("Thank you for shopping with us!");
+
+        WriteLine($"Your {games[selected].Name} game has been successfully purchased, and is currently being delivered!");
+        WriteLine("Thank you for shopping with us!");
     }
 }
