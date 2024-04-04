@@ -174,13 +174,15 @@ public abstract class Platform : IPlatform {
             WriteLine("Enter the amount of $20 bills: ");
 
             input = Console.ReadLine();
-            if(!int.TryParse(input, out twenties)) {        // stack overflow
+            if(!int.TryParse(input, out twenties) || twenties < 0) {        // stack overflow
+                WriteLine("\nInvalid entry!\n");
                 twenties = 0;   // ONLY if invalid input
             }
 
             WriteLine("Enter the amount of $10 bills: ");
             input = Console.ReadLine();
-            if(!int.TryParse(input, out tens)) {
+            if(!int.TryParse(input, out tens) || tens < 0) {
+                WriteLine("\nInvalid entry!\n");
                 tens = 0;
             }
     

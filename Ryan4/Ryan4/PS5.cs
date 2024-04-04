@@ -78,19 +78,22 @@ public class PS5 : Platform {
 
             WriteLine("Enter the amount of $10 bills: ");
             input = Console.ReadLine();
-            if(!int.TryParse(input, out tens)) {
+            if(!int.TryParse(input, out tens) || tens < 0) {
+                WriteLine("\nInvalid entry!\n");
                 tens = 0;
             } 
 
             WriteLine("Enter the amount of $5 bills: ");
             input = Console.ReadLine();
-            if(!int.TryParse(input, out fives)) {
+            if(!int.TryParse(input, out fives) || fives < 0) {
+                WriteLine("\nInvalid entry!\n");
                 fives = 0;
             }
 
             WriteLine("Enter the amount of $1 bills: ");
             input = Console.ReadLine();
-            if(!int.TryParse(input, out ones)) {
+            if(!int.TryParse(input, out ones) || ones < 0) {
+                WriteLine("\nInvalid entry!\n");
                 ones = 0;
             }
 
