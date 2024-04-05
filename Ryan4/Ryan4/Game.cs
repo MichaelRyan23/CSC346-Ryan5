@@ -5,7 +5,10 @@
 *** DUE DATE :      4/5/2024
 *** INSTRUCTOR :    GAMRADT 
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the current assignment>
+*** DESCRIPTION : This file defines the game class that is used throughout
+*** the StoreNS namespace, consisting of a name, price, and amount of units.
+*** Also includes a constructor for creating a new instance and copying an
+*** existing one.
 ********************************************************************/
 using System;
 using System.Collections.Generic;
@@ -18,13 +21,13 @@ public class Game {
     public int Units { get; set; }
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Constructor
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Initializes a new game instance with default values.
+*** INPUT ARGS : name, price, and units
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : N/A 
 ********************************************************************/
     public Game(string name = "", int price = 0, int units = 0) {
         Name = name;
@@ -33,13 +36,13 @@ public class Game {
     }
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Copy constructor
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Creates a copy of a game instance using an existing instance 
+*** INPUT ARGS : oldGame 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : N/A
 ********************************************************************/
     public Game(Game oldGame) {
         Name = oldGame.Name;

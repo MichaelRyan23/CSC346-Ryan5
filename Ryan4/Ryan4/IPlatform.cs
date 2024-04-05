@@ -5,7 +5,9 @@
 *** DUE DATE :      4/5/2024
 *** INSTRUCTOR :    GAMRADT 
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the current assignment>
+*** DESCRIPTION : Defines the IPlatform interface that all platform classes
+*** must satisfy with their own implementation. Each platform class provides
+*** it's own intro.
 ********************************************************************/
 using System;
 namespace StoreNS;
@@ -13,13 +15,14 @@ namespace StoreNS;
 public interface IPlatform {
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Introduction
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Displays a greeting message to the specified store section
+*** (PS5 or switch in this case)
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS :  
+*** RETURN : N/A
 ********************************************************************/
     void Introduction();
 }

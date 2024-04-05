@@ -5,7 +5,9 @@
 *** DUE DATE :      4/5/2024
 *** INSTRUCTOR :    GAMRADT 
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the current assignment>
+*** DESCRIPTION : Implements through the platform class specifically
+*** for PS5. It defines the game selections, has a custom introduction
+*** and payment option through inheritence and polymorphism.
 ********************************************************************/
 using System.Collections.Generic;
 using System;
@@ -14,13 +16,14 @@ namespace StoreNS;
 public class PS5 : Platform {
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Constructor
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Initializes PS5 platform instance with a list of PS5
+*** games with pre-determined Names, price, and units. 
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS :  
+*** RETURN : N/A 
 ********************************************************************/
     public PS5() : base(new List<Game> {
         new Game("Call of Duty", 54, 3),
@@ -30,37 +33,39 @@ public class PS5 : Platform {
     }) {}
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Copy constructor
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Creates a copy of an existing PS5 platform instance
+*** INPUT ARGS : <oldPS5
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : N/A
 ********************************************************************/
     private PS5(PS5 oldPS5) : base(oldPS5) {}
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Introduction
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Displays a welcome message specific to the PS5 platform.
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS :  
+*** RETURN : N/A
 ********************************************************************/
     public override void Introduction() {
         WriteLine("\nWelcome to the PS5 store section!");
     }
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Payment
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Overrides the payment process from Platform into custom
+*** behavior, only aceptings 10's, 5's, and 1's, and finally calculate the
+*** total from that.
+*** INPUT ARGS : 
+*** OUTPUT ARGS :
+*** IN/OUT ARGS : 
+*** RETURN : N/A
 ********************************************************************/
     protected override void Payment() {
         WriteLine("\n*******TRANSACTION HANDLING*******");

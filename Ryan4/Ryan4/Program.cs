@@ -5,7 +5,10 @@
 *** DUE DATE :      4/5/2024
 *** INSTRUCTOR :    GAMRADT 
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the current assignment>
+*** DESCRIPTION : This assignment simulates a video game vending machine
+*** that allows users to pick 2 different types of consoles. The user is
+*** prompted with a menu that leads to several method calls with data 
+*** manipulation/user interface abilities. 
 ********************************************************************/
 using System;
 using System.Collections.Generic;

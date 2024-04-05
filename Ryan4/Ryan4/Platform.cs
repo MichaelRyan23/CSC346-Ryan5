@@ -5,7 +5,9 @@
 *** DUE DATE :      4/5/2024
 *** INSTRUCTOR :    GAMRADT 
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the current assignment>
+*** DESCRIPTION : This file defines the platform class, and serves as a 
+*** base class for PS5 and Switch. It defines the methods Start, game selection,
+*** payment, change, and delivery of the game.
 ********************************************************************/
 using System;
 using System.Collections.Generic;
@@ -18,26 +20,28 @@ public abstract class Platform : IPlatform {
     protected int paid;
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Default/overloaded/parameterized constructor
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Initializes the platform with a list of games respective
+*** to either PS5 or switch, depending on how it is defined in program.cs
+*** INPUT ARGS : gamesList
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : N/A
 ********************************************************************/
     protected Platform(List<Game> gamesList) {
         this.games = gamesList ?? new List<Game>();
     }
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD copy constructor
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Creates a new platform copy using already existing
+*** instance
+*** INPUT ARGS : oldPlatform
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : N/A
 ********************************************************************/
     protected Platform(Platform oldPlatform) {
         games = new List<Game>(oldPlatform.games);
@@ -46,13 +50,13 @@ public abstract class Platform : IPlatform {
     }
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Start
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Manages the flow of the program
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : N/A 
 ********************************************************************/
     public void Start() {
 
@@ -74,24 +78,26 @@ public abstract class Platform : IPlatform {
     }
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Introduction
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Provides an introduction message corresponding to the
+*** respective instance that was created (PS5 or Switch)
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS :  
+*** RETURN : N/A
 ********************************************************************/
     public abstract void Introduction();
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Selection
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Lets the user select an available game, or quit to 
+*** the main menu
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS :  
+*** RETURN : N/A
 ********************************************************************/
     protected void Selection() {
     
@@ -149,13 +155,14 @@ public abstract class Platform : IPlatform {
     }
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Payment
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Processes and handles payment for selected game. Can
+*** only take in twenties and 10's!
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : N/A
 ********************************************************************/
     protected virtual void Payment() {
 
@@ -200,13 +207,13 @@ public abstract class Platform : IPlatform {
     }
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Change 
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Calculates change in 10's and 1's, and returns them to the user 
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS :  
+*** RETURN : N/A
 ********************************************************************/
     protected virtual void Change() {
 
@@ -234,13 +241,14 @@ public abstract class Platform : IPlatform {
     }
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Deliver
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Sends a nice lil message saying that the purchase was
+*** successfull, and that the delivery is being completed.
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS :  
+*** RETURN : N/A 
 ********************************************************************/
     protected void Deliver() {
 

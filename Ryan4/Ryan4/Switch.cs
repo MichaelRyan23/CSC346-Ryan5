@@ -5,7 +5,9 @@
 *** DUE DATE :      4/5/2024
 *** INSTRUCTOR :    GAMRADT 
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the current assignment>
+*** DESCRIPTION : Implements through the platform class specifically
+*** for Switch. It defines the game selections, has a custom introduction
+*** and change option through inheritence and polymorphism.
 ********************************************************************/
 using System.Collections.Generic;
 using System;
@@ -14,13 +16,14 @@ namespace StoreNS;
 public class Switch : Platform {
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Constructor
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Initializes Switch platform instance with a list of Switch
+*** games with pre-determined Names, price, and units.
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : N/A 
 ********************************************************************/
     public Switch() : base(new List<Game> {
         new Game("Animal Crossing", 46, 3),
@@ -29,37 +32,39 @@ public class Switch : Platform {
     }) {}
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Copy constructor
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Creates a copy of an existing Switch platform instance 
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : N/A
 ********************************************************************/
     private Switch(Switch oldSwitch) : base(oldSwitch) {}
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Introduction
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Displays a welcome message specific to the Switch platform. 
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : N/A
 ********************************************************************/
     public override void Introduction() {
         WriteLine("\nWelcome to the Nintendo Switch store section!");
     }
 
 /********************************************************************
-*** METHOD <name of method> 
+*** METHOD Change 
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the method> 
-*** INPUT ARGS : <list of all input parameter names> 
-*** OUTPUT ARGS : <list of all output parameter names> 
-*** IN/OUT ARGS : <list of all input/output parameter names> 
-*** RETURN : <return type and return value name> 
+*** DESCRIPTION : Calculates and provides change using numbers
+*** specific to the Switch's change implementation (5's, 2's, 1's). Overrides
+*** platform method.
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : N/A
 ********************************************************************/
     protected override void Change() {
         
