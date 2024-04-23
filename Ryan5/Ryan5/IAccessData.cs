@@ -14,6 +14,6 @@ namespace GraphNS;
 
 public interface IAccessData {
 
-    void GetData(string path);
+    void GetData(string path) {}
 
 }

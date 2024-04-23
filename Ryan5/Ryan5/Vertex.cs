@@ -16,7 +16,11 @@ public class Vertex {
 
     public int Number { get; set; }
     public bool Visited { get; set; }
-    public List<Vertex> AdjVertices { get; set; }
+    public List<bool> AdjVertices { get; set; }
 
-
+    public Vertex(int number = 0, bool visited = false, List<bool> adjVertices = null) {
+        Number = number;
+        Visited = visited;
+        AdjVertices = adjVertices ?? new List<bool>();
+    }
 }
