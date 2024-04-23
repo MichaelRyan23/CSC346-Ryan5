@@ -16,7 +16,10 @@ namespace GraphNS;
 
 public class Graph : IAccessData, IGraphAlgorithms {
 
-    private List<Vertex> vertices;
+    private List<Vertex> vertices = new();
+
+    public Queue<Vertex> GAQueue { get; set;} = new();
+    public Stack<Vertex> GAStack { get; set;} = new();
 
     public Graph(string filePath) {
         GetData(filePath);
@@ -28,26 +31,22 @@ public class Graph : IAccessData, IGraphAlgorithms {
         }
     }
 
-    private Vertex GetAdjUnvisitedVertex(Vertex vert) {
+    private Vertex? GetAdjUnvisitedVertex(Vertex vert) {
 
         return vertices.FirstOrDefault(vertex => !vertex.Visited && vert.AdjVertices[vertices.IndexOf(vertex)]);
 
     }
 
     private void ViewVertex(Vertex vert) {
-        WriteLine(vert.Number);
+        Console.Write(vert.Number + " ");
     }
 
     // IAccessData Implementation
     private void GetData(string path) {
 
         try {
-            if(!File.Exists(path)) {
-                throw new FileNotFoundException("The file doesn't exist!", path);
-            }
-
             string jsonString = File.ReadAllText(path);
-            vertices = JsonSerializer.Deserialize<List<Vertex>>(jsonString) ?? new List<Vertex>();
+            vertices = JsonSerializer.Deserialize<List<Vertex>>(jsonString)! ?? new List<Vertex>();
         }
         catch (Exception ex) {
             WriteLine(ex.Message);
@@ -56,39 +55,52 @@ public class Graph : IAccessData, IGraphAlgorithms {
     }
 
     // IGraphAlgorithms Implementation
-    //public Queue<Vertex> GAQueue { get; set;}
-    //public Stack<Vertex> GAStack { get; set;}
 
     public void BFS(int start) {
         // queue
-        
-
-
-    }
-
-    public void DFS(int start) {
-        // stack
-        Stack<Vertex> stack = new Stack<Vertex>();
-
         ResetVisitedSet();
 
         Vertex beginningVertex = vertices[start];
         beginningVertex.Visited = true;
         ViewVertex(beginningVertex);
-        stack.Push(beginningVertex);
+        GAQueue.Enqueue(beginningVertex);
 
-        while(stack.Count > 0) {
-            Vertex v = stack.Peek();
-            Vertex adjUnvisitedVertex = GetAdjUnvisitedVertex(v);
+        while(GAQueue.Count > 0) {
+            Vertex v = GAQueue.Dequeue();
+
+            for(int i = 0; i < v.AdjVertices.Count; i++) {
+                if(v.AdjVertices[i] && !vertices[i].Visited) {
+                    Vertex neighbor = vertices[i];
+                    neighbor.Visited = true;
+                    ViewVertex(neighbor);
+                    GAQueue.Enqueue(neighbor);
+                }
+            }
+        }
+        ResetVisitedSet();
+    }
+
+    public void DFS(int start) {
+        // stack
+        ResetVisitedSet();
+
+        Vertex beginningVertex = vertices[start];
+        beginningVertex.Visited = true;
+        ViewVertex(beginningVertex);
+        GAStack.Push(beginningVertex);
+
+        while(GAStack.Count > 0) {
+            Vertex v = GAStack.Peek();
+            Vertex? adjUnvisitedVertex = GetAdjUnvisitedVertex(v);
 
             if(adjUnvisitedVertex != null) {
                 adjUnvisitedVertex.Visited = true;
                 ViewVertex(adjUnvisitedVertex);
-                stack.Push(adjUnvisitedVertex);
+                GAStack.Push(adjUnvisitedVertex);
             } else {
-                stack.Pop();
+                GAStack.Pop();
             }
         }
+        ResetVisitedSet();
     }
-
 }
