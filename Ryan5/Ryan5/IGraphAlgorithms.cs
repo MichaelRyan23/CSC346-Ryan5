@@ -5,7 +5,10 @@
 *** DUE DATE :      4/24/2024
 *** INSTRUCTOR :    GAMRADT 
 *********************************************************************
-*** DESCRIPTION : <detailed English description of the current assignment> ***
+*** DESCRIPTION :IGraphAlgorithms interface, it declares the structure
+*** for traversing the graphs, including two different ways. BFS utilizes
+*** a queue while DFS utilizes a stack. This interface is implemented in 
+*** Graph.cs
 ********************************************************************/
 
 using System;
@@ -17,6 +20,27 @@ public interface IGraphAlgorithms {
     Queue<Vertex> GAQueue { get; set; }
     Stack<Vertex> GAStack { get; set; }
 
-    void BFS(int start);
-    void DFS(int start);
+/********************************************************************
+*** METHOD BFS
+*********************************************************************
+*** DESCRIPTION : Initiates a breadth-first traversal through a graph and its
+*** vertices.
+*** INPUT ARGS : start
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : 
+********************************************************************/
+    public abstract void BFS(int start);
+
+/********************************************************************
+*** METHOD DFS
+*********************************************************************
+*** DESCRIPTION : Initiates a depth-first traversal through a graph and its
+*** vertices.
+*** INPUT ARGS : 
+*** OUTPUT ARGS : 
+*** IN/OUT ARGS : 
+*** RETURN : 
+********************************************************************/
+    public abstract void DFS(int start);
 }
